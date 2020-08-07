@@ -20,7 +20,6 @@ class MyStreamListener(tweepy.StreamListener) :
         else :
             return False
         self.file.close()
-        self.file_full.close()
 
     def on_error(self, status) :
         print(status)
