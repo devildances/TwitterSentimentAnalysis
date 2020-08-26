@@ -3,19 +3,22 @@ from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 
 def main_data():
-    df = pd.read_csv('Data/indonesia_tweet/data.csv', encoding='latin-1')
+    df = pd.read_csv('Data/indonesia_Tweet/data.csv', encoding='latin-1')
     df['label'] = 'nan'
     for i, v in df.transpose().items():
         if (v['HS']==0) & (v['Abusive']==0) & (v['HS_Individual']==0) & (v['HS_Group']==0) & (v['HS_Religion']==0) & (v['HS_Race']==0) &\
         (v['HS_Physical']==0) & (v['HS_Gender']==0) & (v['HS_Other']==0) & (v['HS_Weak']==0) & (v['HS_Moderate']==0) & (v['HS_Strong']==0):
-            df['label'][i] = 'normal'
-        elif (v['HS']==0) & (v['Abusive']==1) & (v['HS_Individual']==0) & (v['HS_Group']==0) & (v['HS_Religion']==0) & (v['HS_Race']==0) &\
-        (v['HS_Physical']==0) & (v['HS_Gender']==0) & (v['HS_Other']==0) & (v['HS_Weak']==0) & (v['HS_Moderate']==0) & (v['HS_Strong']==0):
-            df['label'][i] = 'abusive'
+            df['label'][i] = 'positive'
         else:
-            df['label'][i] = 'hatespeech'
+            df['label'][i] = 'negative'
     df = df[['Tweet','label']]
-    return df
+
+    df1 = pd.read_csv('Data/indonesia_Tweet/data1.csv')
+    df1.label = df1.label.apply(lambda x : 'positive' if x=='P' else 'negative')
+    df2 = pd.concat([df, df1])
+    df2.drop_duplicates(subset=['Tweet'], keep='first',inplace=True)
+
+    return df2
 
 def bahasa_slang():
     slang_a = pd.read_csv('Data/indonesia_tweet/new_kamusalay.csv', encoding='latin-1', names=['original', 'replacement'])

@@ -25,7 +25,7 @@ def generate_ngrams(text, stopwords_list, n_gram=1):
 def ngrams_viz(dataframe=pd.DataFrame(), col_labels='', labels=[], col_target='', ngrams=1, max_words=1, stopwords_list=[]):
     fig, ax = plt.subplots(ncols=len(labels), figsize=(27, 50), dpi=100)
     plt.tight_layout()
-    c = ['red', 'gold', 'green']
+    c = ['red', 'green']
     gr = {1:'unigrams', 2:'bigrams', 3:'trigrams'}
 
     for i in range(len(labels)):
