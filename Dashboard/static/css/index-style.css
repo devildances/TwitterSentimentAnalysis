@@ -1,0 +1,113 @@
+.formstyle { margin-top: 7%; }
+
+h1 { font-family: 'Bungee Shade', cursive; text-align: center; color: #00acee; }
+
+hr.bolding { border: 1px solid gray; border-radius: 5px; }
+
+#tweettext { border-radius: 25px; }
+
+.aboutmelogo { width: 5%; height: 5%; }
+
+.aboutmelogo1 { width: 2%; height: 2%; }
+
+.titlelogo { width: 10%; height: 10%; }
+
+.buttonlogo { width: 20%; height: 20%; }
+
+.aboutme { position: absolute; bottom: 0; width: 100%; }
+
+/* ========================= */
+
+.searchable {
+  position: relative;
+}
+.searchable > .form-control-clear {
+  display: none;
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: .4em;
+  font-weight: bold;
+}
+
+.find-me {
+  font-weight: bold;
+}
+
+.LI-profile-badge {
+  position: absolute;
+  bottom: 8.5%;
+  right: 0;
+}
+
+/* Media query for tablet */
+@media (min-width: 320px) and (max-width: 568px) {
+  .main-title, .form-control-clear {
+    font-size: 12px;
+  }
+
+  .input-tweet {
+    font-size: 12px!important;
+  }
+
+  .searchable .form-control-clear {
+    top: .6em;
+  }
+
+  .btn-sm-custom{
+    font-size: 9px;
+    padding: .275rem .15rem;
+  }
+
+  .result {
+    font-size: 70%;
+  }
+
+  .find-me {
+    font-size: 70%!important;
+  }
+}
+/* Media query mobile */
+@media (min-width: 320px) and (max-width: 568px) {
+  .LI-profile-badge {
+    display: none;
+  }
+    .formstyle {
+      margin-top: 20%;
+    }
+    .main-title, .form-control-clear {
+      font-size: 12px;
+    }
+
+    .input-tweet {
+      font-size: 12px!important;
+    }
+
+    .searchable .form-control-clear {
+      top: .6em;
+    }
+
+    .btn-sm-custom{
+      font-size: 9px;
+      padding: .275rem .15rem;
+    }
+
+    .result {
+      font-size: 70%;
+    }
+
+    .find-me {
+      font-size: 70%!important;
+      font-weight: bold;
+    }
+
+    .aboutmelogo {
+      width: 50px;
+    }
+
+    .aboutmelogo1 {
+      width: 20px;
+    }
+}

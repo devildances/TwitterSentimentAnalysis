@@ -3,29 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='./index-style.css') }}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Mukta&family=Piedra&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Mukta&family=Piedra&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/index-style.css') }}" />
     <title>Sentiment Analysis</title>
 </head>
 <body>
     <div class="container formstyle">
-        <h1>Twitter Sentiment Analysis</h1>
-        <form action="/" method="POST">
-            <input type="text" class="form-control" id="tweettext" name="tweettextinput" placeholder="input your tweet here...">
-            <div>
-                <button type="submit" class="btn btn-primary">Check</button>
-                <a href="/" type="button" class="btn btn-warning">Reset</a>
+        <div class="row justify-content-lg-center justify-content-md-center">
+            <div class="col-lg-10 col-md-10 col-sm-12">
+                <h1 class="main-title"><img src="{{ url_for('static', filename='./images/twitter_PNG.png') }}" alt="twitter" class="titlelogo"> Twitter Sentiment Analysis</h1>
+                <form action="/" method="POST">
+                    <div class="form-group searchable">
+                        <input type="text" class="form-control input-tweet" id="tweettext" name="tweettextinput" placeholder="input your tweet here...">
+                        <span class="form-control-clear form-control-feedback hidden">X</span>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <button type="submit" class="btn btn-primary btn-sm-custom" name="submit" value="lr" title="Logistic Regression model prediction" disabled>Logistic Regression</button>
+                        <button type="submit" class="btn btn-primary btn-sm-custom" name="submit" value="nb" title="Naive Bayes model prediction" disabled>Naive Bayes</button>
+                        <button type="submit" class="btn btn-primary btn-sm-custom" name="submit" value="nn" title="Neural Netowkrs model prediction" disabled>Neural Network</button>
+                        <a href="/" type="button" class="btn btn-warning btn-sm-custom"><i class="fa fa-refresh"></i> Reset</a>
+                        {% if output2 != None %}
+                        <div class="container result">
+                            {% if output2 != 'positive' and output2 != 'negative' %}
+                            <p class="mt-4 text-center"><strong>{{output2}}</strong></p>
+                            {% else %}
+                            <p class="mt-4 text-center"><strong><em>"{{output1}}"</em><br>This tweet has {% if output2 == 'positive' %}
+                                                                            <a style="color: green;">{{output2}}</a>
+                                                                            {% elif output2 == 'negative' %}
+                                                                            <a style="color: red;">{{output2}}</a>
+                                                                            {% endif %} sentiment</strong></p>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
-    {% if output != None %}
-    <div class="container">
-        <p>This tweet is {{output}} sentiment</p>
+    <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="dhika-rangga-b705a110b"><a class="LI-simple-link" href='https://id.linkedin.com/in/dhika-rangga-b705a110b?trk=profile-badge'>Dhika Rangga</a></div>
+    <div class="aboutme text-center">
+            <hr class="mb-1">
+            <p><span class="find-me">Find me on :</span>&nbsp;&nbsp;
+            <a href="#" onclick="window.open('https://www.linkedin.com/in/dhika-rangga-b705a110b/', '_blank');">
+                <img class="aboutmelogo" src="{{ url_for('static', filename='./images/linkedin.png') }}" alt="linkedin" srcset="">
+            </a>&nbsp;&nbsp;&nbsp;
+            <a href="#" onclick="window.open('https://github.com/devildances', '_blank');">
+                <img class="aboutmelogo" src="{{ url_for('static', filename='./images/github.png') }}" alt="github" srcset="">
+            </a>&nbsp;&nbsp;&nbsp;
+            <a href="mailto: diovinr17@gmail.com">
+                <img class="aboutmelogo1" src="{{ url_for('static', filename='./images/gmail.png') }}" alt="gmail" srcset="">
+            </a>
+        </p>
     </div>
-    {% endif %}
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+    <script src="{{ url_for('static', filename='./js/index-script.js') }}"></script>
 </body>
 </html>
