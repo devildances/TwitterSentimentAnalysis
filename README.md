@@ -13,7 +13,7 @@
         </p><hr>
         <p>
             <h2>Process Workflows</h2>
-            <img src='Dashboard/static/images/processworkflow.JPG' alt="processworkflows" style="display: block; margin-left: auto;margin-right: auto; width:40%" />
+            <img src='Dashboard/static/images/processflow.JPG' alt="processworkflows" style="display: block; margin-left: auto;margin-right: auto; width:40%" />
         </p><hr>
         <p>
             <h2>ETL (Extract, Transform, Load)</h2>
